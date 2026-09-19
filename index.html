@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Event Check-in Kiosk</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="shell">
+    <header class="topbar">
+      <div class="brand"><div class="mark">CI</div><div><h1>Self Check-in Kiosk</h1><p>Scan barcode, record check-in, print badge</p></div></div>
+      <nav class="nav"><a class="active" href="index.html">Kiosk</a><a href="gate.html">Gate Scan</a><a href="admin.html">Admin</a></nav>
+    </header>
+    <main class="main">
+      <section class="kiosk-layout">
+        <div class="panel hero-panel">
+          <h2>Scan your barcode</h2>
+          <p class="lead">Use the barcode scanner. Your check-in will be recorded and the badge print page will open automatically.</p>
+          <div class="status-strip">
+            <div class="metric"><strong id="metricTotal">0</strong><span>Total guests</span></div>
+            <div class="metric"><strong id="metricChecked">0</strong><span>Checked in</span></div>
+            <div class="metric"><strong id="metricGate">0</strong><span>Entered hall</span></div>
+          </div>
+        </div>
+        <div class="panel scanner-panel barcode-panel">
+          <div class="scanner-head"><h3>Barcode Scanner</h3><span class="pill">Scanner ready</span></div>
+          <div class="barcode-stage">
+            <div class="barcode-icon" aria-hidden="true"></div>
+            <strong>Scan attendee barcode now</strong>
+            <span>The scanner should be configured to send Enter after each scan.</span>
+          </div>
+          <div>
+            <div class="manual-row">
+              <input class="field barcode-input" id="manualCode" placeholder="Scanned User ID appears here" autocomplete="off" autofocus>
+              <button class="button primary" id="manualSubmit">Check In &amp; Print</button>
+            </div>
+            <div id="scanNotice" class="notice">Ready for barcode scan.</div>
+          </div>
+        </div>
+      </section>
+      <section class="panel badge-preview"><div id="badgePreview" class="empty">Badge preview will appear here after the backend confirms check-in.</div></section>
+    </main>
+  </div>
+  <div id="printTarget" class="print-only"></div>
+  <script src="app.js"></script>
+  <script>EventCheckin.initKiosk();</script>
+</body>
+</html>
